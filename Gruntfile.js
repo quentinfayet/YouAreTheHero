@@ -38,7 +38,7 @@ module.exports = function(grunt) {
                         'app/Resources/libs/font-awesome/css/font-awesome.min.css'
                     ],
                     'web/built/back.min.css': [
-                        '.tmp/back/css/**/*.css',
+                        '.tmp/css/back/**/*.css',
                         'app/Resources/libs/simple-line-icons/simple-line-icons.css'
                     ]
                 }
@@ -75,25 +75,25 @@ module.exports = function(grunt) {
             dist: {
                 files: [{
                     expand: true,
-                    cwd: 'app/Resources/lib/Fontello/fonts',
+                    cwd: 'app/Resources/libs/Fontello/fonts',
                     dest: 'web/fonts',
                     src: ['**']
                 },
                 {
                     expand: true,
-                    cwd: 'app/Resources/lib/simple-line-icons/fonts',
+                    cwd: 'app/Resources/libs/simple-line-icons/fonts',
                     dest: 'web/fonts',
                     src: ['**']
                 },
                 {
                     expand: true,
-                    cwd: 'app/Resources/lib/font-awesome/fonts',
+                    cwd: 'app/Resources/libs/font-awesome/fonts',
                     dest: 'web/fonts',
                     src: ['**']
                 },
                 {
                     expand: true,
-                    cwd: 'app/Resources/lib/images/',
+                    cwd: 'app/Resources/libs/images/',
                     dest: 'web/images',
                     src: ['**']
                 },

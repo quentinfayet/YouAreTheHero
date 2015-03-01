@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}GWYATH Builder BO{% endblock %}</title>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
+    {% block stylesheets %}
+        <link href="../built/back.min.css" type="text/css" rel="stylesheet" />
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+{% javascripts 'built/jquery.min.js' 'built/bootstrap.min.js' 'built/back.min.js' %}
+<script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+<body class="page-header-fixed page-quick-sidebar-over-content page-style-square">
+{% include '::components/back/navbar.html.twig' %}
+<div class="clearfix"></div>
+<div class="page-container">
+    {% include '::components/back/sidebar.html.twig' %}
+    <div class="page-content-wrapper">
+        <div class="page-content">
+            {% if not title is defined %}
+                {% set title = 'Unknown' %}
+            {% endif %}
+            {% include '::components/back/page-header.html.twig' with{ 'title': title, 'breadcrumb': breadcrumb }%}
+            {% block body %}{% endblock %}
+        </div>
+    </div>
+</div>
+{% block javascripts %}
+{% endblock %}
+</body>
+</html>

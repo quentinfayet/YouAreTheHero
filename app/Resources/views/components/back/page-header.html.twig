@@ -1,0 +1,5 @@
+<h3 class="page-title">
+    {{ title }}
+    <small>{% if subTitle is defined %}{{ subTitle }}{% endif %}</small>
+    {% include '::components/back/page-bar.html.twig' with{ 'breadcrumb': breadcrumb } %}
+</h3>
