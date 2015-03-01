@@ -19,7 +19,7 @@
                     </div>
                 </form>
             </li>
-            <li class="start active">
+            <li class="start {% if route == "_dashboard" %} active {% endif %}">
                 <a href="javascript:;">
                     <i class="icon-speech"></i>
                     <span class="title">Dashboard</span>
@@ -36,6 +36,7 @@
                 <a href="javascript:;">
                     <i class="icon-home"></i>
                     <span class="title">Adventures</span>
+                    {% if adventureIsActive %} <span class="selected"></span> {% endif %}
                     <span class="arrow
                         {% if adventureIsActive %} open {% endif %}"></span>
                 </a>

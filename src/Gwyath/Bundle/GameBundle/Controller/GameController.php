@@ -9,11 +9,27 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class GameController extends Controller
 {
     /**
-     * @Route("/new-game")
+     * @Route("/new-game", name="_newGame")
      * @Template()
      */
     public function newGameAction()
     {
-        return array();
+        $additionalInfos = array(
+            'breadcrumb' => array(
+                array(
+                    'title' => 'Homepage',
+                    'icon' => 'fa fa-home',
+                    'route' => false
+                ),
+                array(
+                    'title' => 'New Game',
+                    'icon' => null,
+                    'route' => '_newGame'
+                )
+            ),
+            'title' => 'Dashboard');
+
+        return array_merge($additionalInfos, array(
+        ));
     }
 }
