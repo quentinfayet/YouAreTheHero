@@ -6,14 +6,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-class DefaultController extends Controller
+class GameController extends Controller
 {
     /**
-     * @Route("/hello/{name}")
+     * @Route("/new-game")
      * @Template()
      */
-    public function indexAction($name)
+    public function newGameAction()
     {
-        return array('name' => $name);
+        return array();
     }
 }
