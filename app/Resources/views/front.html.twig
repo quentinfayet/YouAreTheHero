@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}GWYATH Builder !{% endblock %}</title>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Pathway+Gothic+One|PT+Sans+Narrow:400+700|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">
+    {% block stylesheets %}
+        <link href="../built/front.min.css" type="text/css" rel="stylesheet" />
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+{% javascripts 'built/jquery.min.js' 'built/bootstrap.min.js' 'built/front.min.js' %}
+<script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+<body class="corporate">
+{% include '::components/front/header.html.twig' %}
+<div class="main">
+    <div class="container" style="min-height: 600px">
+        {% block body %}{% endblock %}
+    </div>
+</div>
+{% include '::components/front/footer.html.twig' %}
+{% block javascripts %}
+{% endblock %}
+</body>
+</html>
