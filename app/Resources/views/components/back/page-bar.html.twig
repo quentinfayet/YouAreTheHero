@@ -1,0 +1,13 @@
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        {% for crumb in breadcrumb %}
+            <li>
+                <i class="{% if crumb.icon is defined %}{{ crumb.icon }}{% endif %}"></i>
+                <a href="{% if crumb.route == false %}javascript;{% else %}{{ path(crumb.route) }}{% endif %}">{{ crumb.title }}</a>
+                {% if last is not defined %}
+                    <i class="fa fa-angle-right"></i>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</div>
