@@ -9,7 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class LibraryController extends Controller
 {
     /**
-     * @Route("/", name="_front")
+     * @Route("/", name="_dashboard")
      * @Template()
      */
     public function indexAction()
