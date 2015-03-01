@@ -6,7 +6,7 @@
 
     <!--
     <services>
-        <service id="gwyath_game.example" class="Gwyath\Bundle\GameBundle\Example">
+        <service id="gwyath_user.example" class="Gwyath\Bundle\UserBundle\Example">
             <argument type="service" id="service_id" />
             <argument>plain_value</argument>
             <argument>%parameter_name%</argument>

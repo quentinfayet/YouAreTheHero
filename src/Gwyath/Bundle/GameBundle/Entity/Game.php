@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Game
  *
- * @ORM\Table()
+ * @ORM\Table(name="game")
  * @ORM\Entity(repositoryClass="Gwyath\Bundle\GameBundle\Entity\GameRepository")
  */
 class Game
@@ -51,7 +51,8 @@ class Game
 
     /**
      * @var integer
-     *
+     * @ORM\ManyToOne(targetEntity="Gwyath\UserBundle\Bundle\Entity\User")
+     * @ORM\JoinColumn(nullable=false)
      * @ORM\Column(name="author", type="integer")
      */
     private $author;
