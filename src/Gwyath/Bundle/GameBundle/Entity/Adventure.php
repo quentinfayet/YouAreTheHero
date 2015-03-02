@@ -6,12 +6,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Gwyath\Bundle\UserBundle\Entity\User;
 
 /**
- * Game
+ * Adventure
  *
- * @ORM\Table(name="game")
- * @ORM\Entity(repositoryClass="Gwyath\Bundle\GameBundle\Entity\GameRepository")
+ * @ORM\Table(name="adventure")
+ * @ORM\Entity(repositoryClass="Gwyath\Bundle\GameBundle\Entity\AdventureRepository")
  */
-class Game
+class Adventure
 {
     /**
      * @var integer
@@ -21,6 +21,20 @@ class Game
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text")
+     */
+    private $description;
 
     /**
      * @var \DateTime
@@ -39,9 +53,9 @@ class Game
     /**
      * @var User
      * @ORM\ManyToOne(targetEntity="Gwyath\Bundle\UserBundle\Entity\User")
-     * @ORM\JoinColumn(name="gamer", nullable=false)
+     * @ORM\JoinColumn(name="author", nullable=false)
      */
-    private $gamer;
+    private $author;
 
 
     /**
@@ -55,10 +69,56 @@ class Game
     }
 
     /**
+     * Set name
+     *
+     * @param string $name
+     * @return Adventure
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Adventure
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
      * Set created
      *
      * @param \DateTime $created
-     * @return Game
+     * @return Adventure
      */
     public function setCreated($created)
     {
@@ -81,7 +141,7 @@ class Game
      * Set modified
      *
      * @param \DateTime $modified
-     * @return Game
+     * @return Adventure
      */
     public function setModified($modified)
     {
@@ -98,28 +158,5 @@ class Game
     public function getModified()
     {
         return $this->modified;
-    }
-
-    /**
-     * Set gamer
-     *
-     * @param \Gwyath\Bundle\UserBundle\Entity\User $gamer
-     * @return Game
-     */
-    public function setGamer(\Gwyath\Bundle\UserBundle\Entity\User $gamer)
-    {
-        $this->gamer = $gamer;
-
-        return $this;
-    }
-
-    /**
-     * Get gamer
-     *
-     * @return \Gwyath\Bundle\UserBundle\Entity\User 
-     */
-    public function getGamer()
-    {
-        return $this->gamer;
     }
 }
