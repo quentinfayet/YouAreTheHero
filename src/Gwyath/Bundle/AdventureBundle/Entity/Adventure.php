@@ -1,6 +1,6 @@
 <?php
 
-namespace Gwyath\Bundle\GameBundle\Entity;
+namespace Gwyath\Bundle\AdventureBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gwyath\Bundle\UserBundle\Entity\User;
@@ -9,7 +9,7 @@ use Gwyath\Bundle\UserBundle\Entity\User;
  * Adventure
  *
  * @ORM\Table(name="adventure")
- * @ORM\Entity(repositoryClass="Gwyath\Bundle\GameBundle\Entity\AdventureRepository")
+ * @ORM\Entity(repositoryClass="Gwyath\Bundle\AdventureBundle\Entity\AdventureRepository")
  */
 class Adventure
 {

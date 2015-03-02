@@ -5,6 +5,7 @@ namespace Gwyath\Bundle\GameBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Gwyath\Bundle\UserBundle\Entity\User;
 use Gwyath\Bundle\GameBundle\Entity\Player;
+use Gwyath\Bundle\AdventureBundle\Entity\Adventure;
 
 /**
  * Game
@@ -50,6 +51,13 @@ class Game
      * @ORM\JoinColumn(name="player", nullable=false)
      */
     private $player;
+
+    /**
+     * @var Adventure
+     * @ORM\ManyToOne(targetEntity="Gwyath\Bundle\AdventureBundle\Entity\Adventure")
+     * @ORM\JoinColumn(name="adventure", nullable=false)
+     */
+    private $adventure;
 
 
     /**
@@ -152,5 +160,28 @@ class Game
     public function getPlayer()
     {
         return $this->player;
+    }
+
+    /**
+     * Set adventure
+     *
+     * @param \Gwyath\Bundle\AdventureBundle\Entity\Adventure $adventure
+     * @return Game
+     */
+    public function setAdventure(\Gwyath\Bundle\AdventureBundle\Entity\Adventure $adventure)
+    {
+        $this->adventure = $adventure;
+
+        return $this;
+    }
+
+    /**
+     * Get adventure
+     *
+     * @return \Gwyath\Bundle\AdventureBundle\Entity\Adventure 
+     */
+    public function getAdventure()
+    {
+        return $this->adventure;
     }
 }

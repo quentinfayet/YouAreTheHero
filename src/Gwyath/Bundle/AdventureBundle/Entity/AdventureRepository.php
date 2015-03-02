@@ -1,6 +1,6 @@
 <?php
 
-namespace Gwyath\Bundle\GameBundle\Entity;
+namespace Gwyath\Bundle\AdventureBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
 
