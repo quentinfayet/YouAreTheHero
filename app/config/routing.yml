@@ -7,6 +7,22 @@ app:
     resource: @AppBundle/Controller/
     type:     annotation
 
+adventure:
+    resource: @GwyathAdventureBundle/Controller/
+    type:     annotation
+
+game:
+    resource: @GwyathGameBundle/Controller/
+    type:     annotation
+
+library:
+    resource: @GwyathLibraryBundle/Controller/
+    type:     annotation
+
+user:
+    resource: @GwyathUserBundle/Controller/
+    type:     annotation
+
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 
