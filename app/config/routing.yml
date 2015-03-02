@@ -3,10 +3,6 @@ gwyath_library:
     type:     annotation
     prefix:   /
 
-app:
-    resource: @AppBundle/Controller/
-    type:     annotation
-
 adventure:
     resource: @GwyathAdventureBundle/Controller/
     type:     annotation
