@@ -8,7 +8,7 @@ use Gwyath\Bundle\GameBundle\Entity\Game;
 /**
  * Player
  *
- * @ORM\Table()
+ * @ORM\Table(name="player")
  * @ORM\Entity(repositoryClass="Gwyath\Bundle\GameBundle\Entity\PlayerRepository")
  */
 class Player
