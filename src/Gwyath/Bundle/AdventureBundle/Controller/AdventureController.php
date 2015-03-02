@@ -51,7 +51,7 @@ class AdventureController extends Controller
                     'route' => '_newAdventure'
                 )
             ),
-            'title' => 'Dashboard');
+            'title' => 'New Adventure');
 
         return array_merge($additionalInfos, array(
             'form' => $form->createView()
