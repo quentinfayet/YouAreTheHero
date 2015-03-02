@@ -2,15 +2,15 @@
 
 namespace Gwyath\Bundle\AdventureBundle\Controller;
 
+use AppBundle\Controller\GwyathController;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Gwyath\Bundle\AdventureBundle\Entity\Adventure;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Form;
-use Doctrine\ORM\EntityManager;
 
-class AdventureController extends Controller
+class AdventureController extends GwyathController
 {
     /**
      * @Route("/new-adventure", name="_newAdventure")
@@ -30,12 +30,9 @@ class AdventureController extends Controller
         if ($form->isValid()) {
             $adventure->setAuthor($this->getUser());
 
-            /** @var EntityManager $em */
-            $em = $this->getDoctrine()->getManager();
-
-            $em->persist($adventure);
-            $em->flush();
-            $em->clear();
+            $this->em->persist($adventure);
+            $this->em->flush();
+            $this->em->clear();
         }
 
         $additionalInfos = array(
