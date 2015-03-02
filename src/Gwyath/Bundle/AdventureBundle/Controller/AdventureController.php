@@ -9,11 +9,27 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class AdventureController extends Controller
 {
     /**
-     * @Route("/hello/{name}")
+     * @Route("/new-adventure", name="_newAdventure")
      * @Template()
      */
-    public function indexAction($name)
+    public function newAdventureAction()
     {
-        return array('name' => $name);
+        $additionalInfos = array(
+            'breadcrumb' => array(
+                array(
+                    'title' => 'Homepage',
+                    'icon' => 'fa fa-home',
+                    'route' => false
+                ),
+                array(
+                    'title' => 'New Adventure',
+                    'icon' => null,
+                    'route' => '_newAdventure'
+                )
+            ),
+            'title' => 'Dashboard');
+
+        return array_merge($additionalInfos, array(
+        ));
     }
 }

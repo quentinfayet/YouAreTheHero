@@ -1,0 +1,5 @@
+services:
+        acme_demo.form.type.newGame:
+        class: Gwyath\Bundle\AdventureBundle\Form\Type\NewGameType
+        tags:
+        - { name: form.type, alias: newAdventure }

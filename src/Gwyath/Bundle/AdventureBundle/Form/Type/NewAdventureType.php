@@ -1,11 +1,11 @@
 <?php
 
-namespace Gwyath\Bundle\GameBundle\Form\Type;
+namespace Gwyath\Bundle\AdventureBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
-class NewGameType extends AbstractType
+class NewAdventureType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -15,6 +15,6 @@ class NewGameType extends AbstractType
 
     public function getName()
     {
-        return 'newGame';
+        return 'newAdventure';
     }
 }
