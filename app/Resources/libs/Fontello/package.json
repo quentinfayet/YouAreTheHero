@@ -1,0 +1,26 @@
+{
+  "name": "brandymint-fontello",
+  "description": "fontello icons bower package",
+  "version": "3.2.1",
+  "keywords": ["font", "fontello", "icon", "font"],
+  "homepage": "",
+  "author": {
+    "name": "Alexander Mescheryakov",
+    "email": "sib@brandymint.ru",
+    "web": "http://brandymint.ru"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BrandyMint/brandymint-fontello.git"
+  },
+  "licenses": [
+    {
+      "type": "SIL OFL 1.1",
+      "url": "http://scripts.sil.org/OFL"
+    },
+    {
+      "type": "MIT License",
+      "url": "http://opensource.org/licenses/mit-license.html"
+    }
+  ]
+}

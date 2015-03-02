@@ -1,0 +1,54 @@
+{% set route = app.request.attributes.get("_route") %}
+<div class="page-sidebar-wrapper">
+    <div class="page-sidebar navbar-collapse collapse">
+        <ul class="page-sidebar-menu" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+            <li class="sidebar-toggler-wrapper">
+            <div class="sidebar-toggler">
+            </div>
+        </li>
+            <li class="sidebar-search-wrapper">
+                <form class="sidebar-search" action="" method="POST">
+                    <a href="javascript:;" class="remove">
+                        <i class="icon-close"></i>
+                    </a>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search...">
+                                    <span class="input-group-btn">
+                                    <a href="javascript:;" class="btn submit"><i class="icon-magnifier"></i></a>
+                                    </span>
+                    </div>
+                </form>
+            </li>
+            <li class="start {% if route == "_dashboard" %} active {% endif %}">
+                <a href="javascript:;">
+                    <i class="icon-speech"></i>
+                    <span class="title">Dashboard</span>
+                    {% if route == '_dashboard' %} <span class="selected"></span> {% endif %}
+                    <span class="arrow open"></span>
+                </a>
+            </li>
+            {% if route == "_newGame" or route == "_listGame" %}
+                {% set adventureIsActive = true %}
+            {% else %}
+                {% set adventureIsActive = false %}
+            {% endif %}
+            <li class="{% if adventureIsActive %} active opent {% endif %}">
+                <a href="javascript:;">
+                    <i class="icon-home"></i>
+                    <span class="title">Adventures</span>
+                    {% if adventureIsActive %} <span class="selected"></span> {% endif %}
+                    <span class="arrow
+                        {% if adventureIsActive %} open {% endif %}"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="">
+                        <a href="{{ path("_newAdventure") }}">New adventure</a>
+                    </li>
+                    <li class="">
+                        <a href="">List of adventures</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
