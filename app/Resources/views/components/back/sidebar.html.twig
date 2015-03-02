@@ -19,7 +19,7 @@
                     </div>
                 </form>
             </li>
-            <li class="start active">
+            <li class="start {% if route == "_dashboard" %} active {% endif %}">
                 <a href="javascript:;">
                     <i class="icon-speech"></i>
                     <span class="title">Dashboard</span>
@@ -36,12 +36,13 @@
                 <a href="javascript:;">
                     <i class="icon-home"></i>
                     <span class="title">Adventures</span>
+                    {% if adventureIsActive %} <span class="selected"></span> {% endif %}
                     <span class="arrow
                         {% if adventureIsActive %} open {% endif %}"></span>
                 </a>
                 <ul class="sub-menu">
                     <li class="">
-                        <a href="">New adventure</a>
+                        <a href="{{ path("_newAdventure") }}">New adventure</a>
                     </li>
                     <li class="">
                         <a href="">List of adventures</a>
