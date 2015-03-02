@@ -12,6 +12,7 @@ use Gwyath\Bundle\AdventureBundle\Entity\Adventure;
  *
  * @ORM\Table(name="game")
  * @ORM\Entity(repositoryClass="Gwyath\Bundle\GameBundle\Entity\GameRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Game
 {
@@ -183,5 +184,22 @@ class Game
     public function getAdventure()
     {
         return $this->adventure;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersist()
+    {
+        $this->created = new \DateTime();
+        $this->modified = $this->created;
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function preUpdate()
+    {
+        $this->modified = new \DateTime();
     }
 }

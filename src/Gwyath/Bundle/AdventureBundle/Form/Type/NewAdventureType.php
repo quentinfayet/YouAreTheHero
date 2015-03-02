@@ -11,6 +11,7 @@ class NewAdventureType extends AbstractType
     {
         $builder->add('name');
         $builder->add('description');
+        $builder->add('save', 'submit');
     }
 
     public function getName()

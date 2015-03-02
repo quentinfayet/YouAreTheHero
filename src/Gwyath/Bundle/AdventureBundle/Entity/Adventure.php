@@ -10,6 +10,7 @@ use Gwyath\Bundle\UserBundle\Entity\User;
  *
  * @ORM\Table(name="adventure")
  * @ORM\Entity(repositoryClass="Gwyath\Bundle\AdventureBundle\Entity\AdventureRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Adventure
 {
@@ -181,5 +182,22 @@ class Adventure
     public function getAuthor()
     {
         return $this->author;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersist()
+    {
+        $this->created = new \DateTime();
+        $this->modified = $this->created;
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function preUpdate()
+    {
+        $this->modified = new \DateTime();
     }
 }

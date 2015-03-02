@@ -10,6 +10,7 @@ use Gwyath\Bundle\GameBundle\Entity\Game;
  *
  * @ORM\Table(name="player")
  * @ORM\Entity(repositoryClass="Gwyath\Bundle\GameBundle\Entity\PlayerRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Player
 {
@@ -35,6 +36,20 @@ class Player
      * @ORM\JoinColumn(name="game", nullable=false)
      */
     private $game;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created", type="datetime")
+     */
+    private $created;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="modified", type="datetime")
+     */
+    private $modified;
 
     /**
      * Get id
@@ -90,5 +105,68 @@ class Player
     public function getGame()
     {
         return $this->game;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersist()
+    {
+        $this->created = new \DateTime();
+        $this->modified = $this->created;
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function preUpdate()
+    {
+        $this->modified = new \DateTime();
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return Player
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime 
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set modified
+     *
+     * @param \DateTime $modified
+     * @return Player
+     */
+    public function setModified($modified)
+    {
+        $this->modified = $modified;
+
+        return $this;
+    }
+
+    /**
+     * Get modified
+     *
+     * @return \DateTime 
+     */
+    public function getModified()
+    {
+        return $this->modified;
     }
 }
