@@ -159,4 +159,27 @@ class Adventure
     {
         return $this->modified;
     }
+
+    /**
+     * Set author
+     *
+     * @param \Gwyath\Bundle\UserBundle\Entity\User $author
+     * @return Adventure
+     */
+    public function setAuthor(\Gwyath\Bundle\UserBundle\Entity\User $author)
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * Get author
+     *
+     * @return \Gwyath\Bundle\UserBundle\Entity\User 
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
 }
