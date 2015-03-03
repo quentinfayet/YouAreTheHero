@@ -1,0 +1,6 @@
+{% extends '::back.html.twig' %}
+{% block body %}
+    {% for flashMessage in app.session.flashbag.get('success') %}
+        {% include '::components/common/notification/success.html.twig' %}
+    {% endfor %}
+{% endblock %}

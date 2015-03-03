@@ -10,6 +10,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Gwyath\Bundle\AdventureBundle\Entity\Adventure;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Form;
+use Gwyath\Bundle\AdventureBundle\Entity\AdventureRepository;
+use Gwyath\Bundle\AdventureBundle\Exception\AdventureException;
 
 class AdventureController extends GwyathController
 {
@@ -56,5 +58,48 @@ class AdventureController extends GwyathController
         return array_merge($additionalInfos, array(
             'form' => $form->createView()
         ));
+    }
+
+    /**
+     * @Route("/adventure/{adventureId}/new-page", name="_newPage")
+     * @Template()
+     * @param Request $request
+     * @param integer $adventureId
+     * @return array
+     */
+    public function newPageAction(Request $request, $adventureId)
+    {
+        try {
+            if (!is_numeric($adventureId) || empty($adventureId)) {
+                throw new AdventureException(AdventureException::ADVENTURE_BAD_ID);
+            }
+            /** @var AdventureRepository $adventureRepository */
+            $adventureRepository = $this->em->getRepository('GwyathAdventureBundle:Adventure');
+            /** @var Adventure $adventure */
+            $adventure = $adventureRepository->findOneById($adventureId);
+            if (null === $adventure) {
+                throw new AdventureException(AdventureException::ADVENTURE_NOT_FOUND);
+            }
+            $additionalInfos = array(
+                'breadcrumb' => array(
+                    array(
+                        'title' => 'Homepage',
+                        'icon' => 'fa fa-home',
+                        'route' => false
+                    ),
+                    array(
+                        'title' => 'New Page for "' . $adventure->getName() . '"',
+                        'icon' => null,
+                        'route' => false
+                    )
+                ),
+                'title' => 'Add a page to "' . $adventure->getName() . '"');
+
+            return array_merge($additionalInfos, array(
+            ));
+        } catch (AdventureException $e) {
+            // TODO Render custom template for exceptions
+            var_dump($e->getMessage());
+        }
     }
 }
