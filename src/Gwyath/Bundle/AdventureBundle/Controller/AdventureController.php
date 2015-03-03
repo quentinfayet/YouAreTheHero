@@ -3,6 +3,7 @@
 namespace Gwyath\Bundle\AdventureBundle\Controller;
 
 use AppBundle\Controller\GwyathController;
+use Gwyath\Bundle\AdventureBundle\Flashbag\NewAdventureFlashbag;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -33,6 +34,8 @@ class AdventureController extends GwyathController
             $this->em->persist($adventure);
             $this->em->flush();
             $this->em->clear();
+
+            $this->session->getFlashBag()->add('success', 'The adventure has been created');
         }
 
         $additionalInfos = array(
