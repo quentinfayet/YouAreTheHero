@@ -3,8 +3,20 @@ gwyath_library:
     type:     annotation
     prefix:   /
 
-app:
-    resource: @AppBundle/Controller/
+adventure:
+    resource: @GwyathAdventureBundle/Controller/
+    type:     annotation
+
+game:
+    resource: @GwyathGameBundle/Controller/
+    type:     annotation
+
+library:
+    resource: @GwyathLibraryBundle/Controller/
+    type:     annotation
+
+user:
+    resource: @GwyathUserBundle/Controller/
     type:     annotation
 
 fos_user_security:

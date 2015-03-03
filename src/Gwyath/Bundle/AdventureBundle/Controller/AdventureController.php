@@ -2,15 +2,16 @@
 
 namespace Gwyath\Bundle\AdventureBundle\Controller;
 
+use AppBundle\Controller\GwyathController;
+use Gwyath\Bundle\AdventureBundle\Flashbag\NewAdventureFlashbag;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Gwyath\Bundle\AdventureBundle\Entity\Adventure;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Form;
-use Doctrine\ORM\EntityManager;
 
-class AdventureController extends Controller
+class AdventureController extends GwyathController
 {
     /**
      * @Route("/new-adventure", name="_newAdventure")
@@ -30,12 +31,11 @@ class AdventureController extends Controller
         if ($form->isValid()) {
             $adventure->setAuthor($this->getUser());
 
-            /** @var EntityManager $em */
-            $em = $this->getDoctrine()->getManager();
+            $this->em->persist($adventure);
+            $this->em->flush();
+            $this->em->clear();
 
-            $em->persist($adventure);
-            $em->flush();
-            $em->clear();
+            $this->session->getFlashBag()->add('success', 'The adventure has been created');
         }
 
         $additionalInfos = array(
@@ -51,7 +51,7 @@ class AdventureController extends Controller
                     'route' => '_newAdventure'
                 )
             ),
-            'title' => 'Dashboard');
+            'title' => 'New Adventure');
 
         return array_merge($additionalInfos, array(
             'form' => $form->createView()

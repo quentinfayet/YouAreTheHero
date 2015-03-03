@@ -1,0 +1,10 @@
+<div class="alert alert-success">
+    <strong>
+        {% if flashTitle is defined %}
+            {{ flashTitle }}
+        {% else %}
+            Success !
+        {% endif %}
+    </strong>
+    {{ flashMessage }}
+</div>

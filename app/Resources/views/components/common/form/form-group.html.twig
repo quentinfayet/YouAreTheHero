@@ -1,0 +1,12 @@
+<div class="form-group">
+    <label class="col-md-3 control-label" for="name">{{ form_label(formElement) }}</label>
+    <div class="col-md-9">
+        {{ form_widget(formElement, {
+            "attr": {
+                "class": "form-control",
+                "placeholder": placeholder
+            }
+        }
+        ) }}
+    </div>
+</div>
