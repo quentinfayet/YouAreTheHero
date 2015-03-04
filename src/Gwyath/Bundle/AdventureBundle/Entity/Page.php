@@ -4,15 +4,15 @@ namespace Gwyath\Bundle\AdventureBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gwyath\Bundle\UserBundle\Entity\User;
+use Gwyath\Bundle\AdventureBundle\Entity\Adventure;
 
 /**
- * Adventure
+ * Page
  *
- * @ORM\Table(name="adventure")
- * @ORM\Entity(repositoryClass="Gwyath\Bundle\AdventureBundle\Entity\AdventureRepository")
- * @ORM\HasLifecycleCallbacks()
+ * @ORM\Table(name="page")
+ * @ORM\Entity(repositoryClass="Gwyath\Bundle\AdventureBundle\Entity\PageRepository")
  */
-class Adventure
+class Page
 {
     /**
      * @var integer
@@ -26,16 +26,9 @@ class Adventure
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="text", type="text")
      */
-    private $name;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="description", type="text")
-     */
-    private $description;
+    private $text;
 
     /**
      * @var \DateTime
@@ -50,6 +43,13 @@ class Adventure
      * @ORM\Column(name="modified", type="datetime")
      */
     private $modified;
+
+    /**
+     * @var Adventure
+     * @ORM\ManyToOne(targetEntity="Gwyath\Bundle\AdventureBundle\Entity\Adventure")
+     * @ORM\JoinColumn(name="adventure_id", nullable=false)
+     */
+    private $adventure;
 
     /**
      * @var User
@@ -70,56 +70,33 @@ class Adventure
     }
 
     /**
-     * Set name
+     * Set text
      *
-     * @param string $name
-     * @return Adventure
+     * @param string $text
+     * @return Page
      */
-    public function setName($name)
+    public function setText($text)
     {
-        $this->name = $name;
+        $this->text = $text;
 
         return $this;
     }
 
     /**
-     * Get name
+     * Get text
      *
      * @return string 
      */
-    public function getName()
+    public function getText()
     {
-        return $this->name;
-    }
-
-    /**
-     * Set description
-     *
-     * @param string $description
-     * @return Adventure
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string 
-     */
-    public function getDescription()
-    {
-        return $this->description;
+        return $this->text;
     }
 
     /**
      * Set created
      *
      * @param \DateTime $created
-     * @return Adventure
+     * @return Page
      */
     public function setCreated($created)
     {
@@ -142,7 +119,7 @@ class Adventure
      * Set modified
      *
      * @param \DateTime $modified
-     * @return Adventure
+     * @return Page
      */
     public function setModified($modified)
     {
@@ -162,10 +139,50 @@ class Adventure
     }
 
     /**
+     * @ORM\PrePersist
+     */
+    public function prePersist()
+    {
+        $this->created = new \DateTime();
+        $this->modified = $this->created;
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function preUpdate()
+    {
+        $this->modified = new \DateTime();
+    }
+
+    /**
+     * Set adventure
+     *
+     * @param \Gwyath\Bundle\AdventureBundle\Entity\Adventure $adventure
+     * @return Page
+     */
+    public function setAdventure(\Gwyath\Bundle\AdventureBundle\Entity\Adventure $adventure)
+    {
+        $this->adventure = $adventure;
+
+        return $this;
+    }
+
+    /**
+     * Get adventure
+     *
+     * @return \Gwyath\Bundle\AdventureBundle\Entity\Adventure 
+     */
+    public function getAdventure()
+    {
+        return $this->adventure;
+    }
+
+    /**
      * Set author
      *
      * @param \Gwyath\Bundle\UserBundle\Entity\User $author
-     * @return Adventure
+     * @return Page
      */
     public function setAuthor(\Gwyath\Bundle\UserBundle\Entity\User $author)
     {
@@ -182,22 +199,5 @@ class Adventure
     public function getAuthor()
     {
         return $this->author;
-    }
-
-    /**
-     * @ORM\PrePersist
-     */
-    public function prePersist()
-    {
-        $this->created = new \DateTime();
-        $this->modified = $this->created;
-    }
-
-    /**
-     * @ORM\PreUpdate
-     */
-    public function preUpdate()
-    {
-        $this->modified = new \DateTime();
     }
 }
