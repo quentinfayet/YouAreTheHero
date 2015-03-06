@@ -4,6 +4,8 @@ namespace Gwyath\Bundle\AdventureBundle\Controller;
 
 use AppBundle\Controller\GwyathController;
 use Gwyath\Bundle\AdventureBundle\Flashbag\NewAdventureFlashbag;
+use Gwyath\Bundle\AdventureBundle\Form\Type\NewAdventureType;
+use Gwyath\Bundle\AdventureBundle\Form\Type\NewPageType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -12,6 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Form;
 use Gwyath\Bundle\AdventureBundle\Entity\AdventureRepository;
 use Gwyath\Bundle\AdventureBundle\Exception\AdventureException;
+use Gwyath\Bundle\AdventureBundle\Entity\Page;
 
 class AdventureController extends GwyathController
 {
@@ -26,7 +29,7 @@ class AdventureController extends GwyathController
         /** @var Adventure $adventure */
         $adventure = new Adventure();
         /** @var Form $form */
-        $form = $this->createForm('newAdventure', $adventure);
+        $form = $this->createForm(NewAdventureType::NAME, $adventure);
 
         $form->handleRequest($request);
 
@@ -73,13 +76,27 @@ class AdventureController extends GwyathController
             if (!is_numeric($adventureId) || empty($adventureId)) {
                 throw new AdventureException(AdventureException::ADVENTURE_BAD_ID);
             }
+
             /** @var AdventureRepository $adventureRepository */
             $adventureRepository = $this->em->getRepository('GwyathAdventureBundle:Adventure');
             /** @var Adventure $adventure */
             $adventure = $adventureRepository->findOneById($adventureId);
+
             if (null === $adventure) {
                 throw new AdventureException(AdventureException::ADVENTURE_NOT_FOUND);
             }
+
+            /** @var Page $page */
+            $page = new Page();
+            /** @var Form $form */
+            $form = $this->createForm(NewPageType::NAME, $page);
+
+            $form->handleRequest($request);
+
+            if ($form->isValid()) {
+
+            }
+
             $additionalInfos = array(
                 'breadcrumb' => array(
                     array(
@@ -88,7 +105,7 @@ class AdventureController extends GwyathController
                         'route' => false
                     ),
                     array(
-                        'title' => 'New Page for "' . $adventure->getName() . '"',
+                        'title' => 'New Page for " <strong>' . $adventure->getName() . '</strong> "',
                         'icon' => null,
                         'route' => false
                     )
@@ -96,6 +113,7 @@ class AdventureController extends GwyathController
                 'title' => 'Add a page to "' . $adventure->getName() . '"');
 
             return array_merge($additionalInfos, array(
+                'form' => $form->createView()
             ));
         } catch (AdventureException $e) {
             // TODO Render custom template for exceptions

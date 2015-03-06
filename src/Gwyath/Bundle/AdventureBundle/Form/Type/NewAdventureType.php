@@ -7,6 +7,9 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 class NewAdventureType extends AbstractType
 {
+
+    const NAME = 'newAdventure';
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('name');
@@ -16,6 +19,6 @@ class NewAdventureType extends AbstractType
 
     public function getName()
     {
-        return 'newAdventure';
+        return self::NAME;
     }
 }

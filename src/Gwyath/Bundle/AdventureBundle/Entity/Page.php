@@ -5,6 +5,7 @@ namespace Gwyath\Bundle\AdventureBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Gwyath\Bundle\UserBundle\Entity\User;
 use Gwyath\Bundle\AdventureBundle\Entity\Adventure;
+use Gwyath\Bundle\AdventureBundle\Entity\PageType;
 
 /**
  * Page
@@ -57,6 +58,13 @@ class Page
      * @ORM\JoinColumn(name="author_id", nullable=false)
      */
     private $author;
+
+    /**
+     * @var PageType
+     * @ORM\ManyToOne(targetEntity="Gwyath\Bundle\AdventureBundle\Entity\PageType")
+     * @ORM\JoinColumn(name="page_type_id", nullable=false)
+     */
+    private $pageType;
 
 
     /**
@@ -199,5 +207,28 @@ class Page
     public function getAuthor()
     {
         return $this->author;
+    }
+
+    /**
+     * Set pageType
+     *
+     * @param \Gwyath\Bundle\AdventureBundle\Entity\PageType $pageType
+     * @return Page
+     */
+    public function setPageType(\Gwyath\Bundle\AdventureBundle\Entity\PageType $pageType)
+    {
+        $this->pageType = $pageType;
+
+        return $this;
+    }
+
+    /**
+     * Get pageType
+     *
+     * @return \Gwyath\Bundle\AdventureBundle\Entity\PageType 
+     */
+    public function getPageType()
+    {
+        return $this->pageType;
     }
 }

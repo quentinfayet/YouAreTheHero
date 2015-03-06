@@ -3,3 +3,7 @@ services:
                 class: Gwyath\Bundle\AdventureBundle\Form\Type\NewAdventureType
                 tags:
                         - { name: form.type, alias: newAdventure }
+        adventure.form.type.newPage:
+                        class: Gwyath\Bundle\AdventureBundle\Form\Type\NewPageType
+                        tags:
+                                - { name: form.type, alias: newPage }
