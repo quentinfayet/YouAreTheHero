@@ -19,7 +19,9 @@
         "sensio/distribution-bundle": "~3.0,>=3.0.12",
         "sensio/framework-extra-bundle": "~3.0,>=3.0.2",
         "incenteev/composer-parameter-handler": "~2.0",
-        "friendsofsymfony/user-bundle": "~2.0@dev"
+        "friendsofsymfony/user-bundle": "~2.0@dev",
+        "phpunit/phpunit": "4.7.*@dev",
+        "stfalcon/tinymce-bundle": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"
