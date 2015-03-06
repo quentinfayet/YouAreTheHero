@@ -7,3 +7,5 @@ services:
                         class: Gwyath\Bundle\AdventureBundle\Form\Type\NewPageType
                         tags:
                                 - { name: form.type, alias: newPage }
+        adventure.pageCreator:
+                class: Gwyath\Bundle\AdventureBundle\Service\PageCreator

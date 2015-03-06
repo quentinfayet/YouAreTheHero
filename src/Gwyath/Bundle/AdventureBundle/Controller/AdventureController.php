@@ -3,6 +3,7 @@
 namespace Gwyath\Bundle\AdventureBundle\Controller;
 
 use AppBundle\Controller\GwyathController;
+use AppBundle\Exception\ServiceException;
 use Gwyath\Bundle\AdventureBundle\Flashbag\NewAdventureFlashbag;
 use Gwyath\Bundle\AdventureBundle\Form\Type\NewAdventureType;
 use Gwyath\Bundle\AdventureBundle\Form\Type\NewPageType;
@@ -15,6 +16,7 @@ use Symfony\Component\Form\Form;
 use Gwyath\Bundle\AdventureBundle\Entity\AdventureRepository;
 use Gwyath\Bundle\AdventureBundle\Exception\AdventureException;
 use Gwyath\Bundle\AdventureBundle\Entity\Page;
+use Gwyath\Bundle\AdventureBundle\Service\PageCreator;
 
 class AdventureController extends GwyathController
 {
@@ -94,7 +96,12 @@ class AdventureController extends GwyathController
             $form->handleRequest($request);
 
             if ($form->isValid()) {
-
+                /** @var PageCreator $pageCreator */
+                $pageCreator = $this->container->get('adventure.pageCreator');
+                if (null === $pageCreator) {
+                    throw new ServiceException(ServiceException::SERVICE_NULL, 'adventure.pageCreator');
+                }
+                $pageCreator->createPage($form, $page);
             }
 
             $additionalInfos = array(
