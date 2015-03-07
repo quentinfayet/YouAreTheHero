@@ -9,3 +9,5 @@ services:
                                 - { name: form.type, alias: newPage }
         adventure.pageCreator:
                 class: Gwyath\Bundle\AdventureBundle\Service\PageCreator
+                arguments:
+                        entityManager: "@doctrine.orm.entity_manager"

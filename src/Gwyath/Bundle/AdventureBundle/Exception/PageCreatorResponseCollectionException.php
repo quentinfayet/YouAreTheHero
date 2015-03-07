@@ -5,12 +5,11 @@ namespace Gwyath\Bundle\AdventureBundle\Exception;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use \Exception;
 
-class PageException extends HttpException
+class PageCreatorResponseCollectionException extends HttpException
 {
 
-    const PAGE_INVALID_FORM = 'The form data are not valid';
-    const PAGE_INVALID_PAGE_ENTITY = 'The given Page is not valid';
-    const PAGE_INVALID_ADVENTURE_ENTITY = 'The given Adventure is not valid';
+    const PCRC_NOT_ARRAY = 'The given collection of responses is not an array';
+    const PCRC_INTEGRITY_ISSUE = 'All of the given responses are not of the correct type';
 
     public function __construct($message = null, Exception $previous = null, $code = 0)
     {

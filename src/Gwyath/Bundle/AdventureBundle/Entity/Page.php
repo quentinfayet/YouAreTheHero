@@ -12,6 +12,7 @@ use Gwyath\Bundle\AdventureBundle\Entity\PageType;
  *
  * @ORM\Table(name="page")
  * @ORM\Entity(repositoryClass="Gwyath\Bundle\AdventureBundle\Entity\PageRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Page
 {

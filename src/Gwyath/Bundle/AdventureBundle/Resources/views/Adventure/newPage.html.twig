@@ -4,6 +4,12 @@
     {% for flashMessage in app.session.flashbag.get('success') %}
         {% include '::components/common/notification/success.html.twig' %}
     {% endfor %}
+    {% for flashMessage in app.session.flashbag.get('warning') %}
+        {% include '::components/common/notification/warning.html.twig' %}
+    {% endfor %}
+    {% for flashMessage in app.session.flashbag.get('error') %}
+        {% include '::components/common/notification/error.html.twig' %}
+    {% endfor %}
     {{ form_start(form) }}
         {% include "::components/common/form/form-group-checkbox-list.html.twig" with {"formElement": form.pageType, "placeholder": "Page's type"} %}
         {% include "::components/common/form/form-group-tinymce.html.twig" with {"formElement": form.text, "placeholder": "Page's content"} %}

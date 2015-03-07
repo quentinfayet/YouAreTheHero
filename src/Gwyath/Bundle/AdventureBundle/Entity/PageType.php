@@ -12,6 +12,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class PageType
 {
+
+    const BEGINNING_NAME = 'Beginning';
+
     /**
      * @var integer
      *
