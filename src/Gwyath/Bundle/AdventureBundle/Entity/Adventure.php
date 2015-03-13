@@ -58,6 +58,13 @@ class Adventure
      */
     private $author;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="page_number", type="integer")
+     */
+    private $pageNumber;
+
 
     /**
      * Get id
@@ -199,5 +206,28 @@ class Adventure
     public function preUpdate()
     {
         $this->modified = new \DateTime();
+    }
+
+    /**
+     * Set pageNumber
+     *
+     * @param integer $pageNumber
+     * @return Adventure
+     */
+    public function setPageNumber($pageNumber)
+    {
+        $this->pageNumber = $pageNumber;
+
+        return $this;
+    }
+
+    /**
+     * Get pageNumber
+     *
+     * @return integer 
+     */
+    public function getPageNumber()
+    {
+        return $this->pageNumber;
     }
 }

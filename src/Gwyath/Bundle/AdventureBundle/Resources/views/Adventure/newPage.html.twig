@@ -11,6 +11,7 @@
         {% include '::components/common/notification/error.html.twig' %}
     {% endfor %}
     {{ form_start(form) }}
+        {% include "::components/common/form/form-group-label.html.twig" with {"label": "Page number", "value": adventure.pageNumber + 1} %}
         {% include "::components/common/form/form-group-checkbox-list.html.twig" with {"formElement": form.pageType, "placeholder": "Page's type"} %}
         {% include "::components/common/form/form-group-tinymce.html.twig" with {"formElement": form.text, "placeholder": "Page's content"} %}
         {% include "::components/common/form/form-group-save.html.twig" with {"formElement": form.save} %}

@@ -127,7 +127,8 @@ class AdventureController extends GwyathController
                 'title' => 'Add a page to "' . $adventure->getName() . '"');
 
             return array_merge($additionalInfos, array(
-                'form' => $form->createView()
+                'form' => $form->createView(),
+                'adventure' => $adventure
             ));
         } catch (AdventureException $e) {
             // TODO Render custom template for exceptions
