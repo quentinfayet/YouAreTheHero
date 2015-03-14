@@ -2,7 +2,9 @@
 
 namespace Gwyath\Bundle\AdventureBundle\Flashbag;
 
-class NewAdventureFlashbag
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBag;
+
+class NewAdventureFlashbag extends FlashBag
 {
 
     public static function sendSuccess()

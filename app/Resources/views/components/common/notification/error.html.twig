@@ -1,0 +1,10 @@
+<div class="alert alert-danger">
+    <strong>
+        {% if flashTitle is defined %}
+            {{ flashTitle }}
+        {% else %}
+            Error !
+        {% endif %}
+    </strong>
+    {{ flashMessage }}
+</div>

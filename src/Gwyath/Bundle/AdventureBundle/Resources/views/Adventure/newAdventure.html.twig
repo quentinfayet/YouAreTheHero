@@ -14,7 +14,7 @@
     <div class="form-body">
         {% include "::components/common/form/form-group.html.twig" with {"formElement": form.name, "placeholder": "Adventure's name"} %}
         {% include "::components/common/form/form-group.html.twig" with {"formElement": form.description, "placeholder": "Adventure's description"} %}
-        {% include "::components/common/form/form-group-save.html.twig" with {"formElement": form.save, "placeholder": "Adventure's description"} %}
+        {% include "::components/common/form/form-group-save.html.twig" with {"formElement": form.save} %}
     </div>
     {{ form_end(form) }}
 {% endblock %}
