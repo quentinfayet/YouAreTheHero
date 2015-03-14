@@ -3,3 +3,11 @@ services:
                 class: Gwyath\Bundle\AdventureBundle\Form\Type\NewAdventureType
                 tags:
                         - { name: form.type, alias: newAdventure }
+        adventure.form.type.newPage:
+                        class: Gwyath\Bundle\AdventureBundle\Form\Type\NewPageType
+                        tags:
+                                - { name: form.type, alias: newPage }
+        adventure.pageCreator:
+                class: Gwyath\Bundle\AdventureBundle\Service\PageCreator
+                arguments:
+                        entityManager: "@doctrine.orm.entity_manager"

@@ -2,7 +2,12 @@
 
 namespace Gwyath\Bundle\AdventureBundle\Entity;
 
+use AppBundle\Exception\RepositoryException;
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\QueryBuilder;
+use Gwyath\Bundle\AdventureBundle\Entity\PageType;
+use Doctrine\ORM\Query;
 
 /**
  * AdventureRepository
@@ -12,4 +17,30 @@ use Doctrine\ORM\EntityRepository;
  */
 class AdventureRepository extends EntityRepository
 {
+    public function hasBeginningPage(Adventure $adventure)
+    {
+        /** @var EntityManager $em */
+        $em = $this->getEntityManager();
+        /** @var QueryBuilder $builder */
+        $builder = $em->createQueryBuilder();
+
+        $builder->select('COUNT(p.id)')
+            ->from('GwyathAdventureBundle:Page', 'p')
+            ->join('GwyathAdventureBundle:PageType', 'pt')
+            ->where('p.adventure = :aid')
+            ->andWhere('pt.name = :ptname')
+            ->setParameter('aid', $adventure->getId())
+            ->setParameter('ptname',  PageType::BEGINNING_NAME);
+
+        /** @var Query $query */
+        $query = $builder->getQuery();
+        /** @var array $result */
+        $result = $query->getSingleResult();
+
+        if (!is_array($result) || empty($result) || !isset($result[1])) {
+            throw new RepositoryException(RepositoryException::REPOSITORY_BAD_RESULT);
+        }
+
+        return $result[1];
+    }
 }

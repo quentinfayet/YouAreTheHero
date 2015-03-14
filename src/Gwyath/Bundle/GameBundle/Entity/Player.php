@@ -33,7 +33,7 @@ class Player
     /**
      * @var Game
      * @ORM\ManyToOne(targetEntity="Gwyath\Bundle\GameBundle\Entity\Game")
-     * @ORM\JoinColumn(name="game", nullable=false)
+     * @ORM\JoinColumn(name="game_id", nullable=false)
      */
     private $game;
 

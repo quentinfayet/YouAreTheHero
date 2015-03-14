@@ -42,21 +42,21 @@ class Game
     /**
      * @var User
      * @ORM\ManyToOne(targetEntity="Gwyath\Bundle\UserBundle\Entity\User")
-     * @ORM\JoinColumn(name="gamer", nullable=false)
+     * @ORM\JoinColumn(name="gamer_id", nullable=false)
      */
     private $gamer;
 
     /**
      * @var Player
      * @ORM\ManyToOne(targetEntity="Gwyath\Bundle\GameBundle\Entity\Player")
-     * @ORM\JoinColumn(name="player", nullable=false)
+     * @ORM\JoinColumn(name="player_id", nullable=false)
      */
     private $player;
 
     /**
      * @var Adventure
      * @ORM\ManyToOne(targetEntity="Gwyath\Bundle\AdventureBundle\Entity\Adventure")
-     * @ORM\JoinColumn(name="adventure", nullable=false)
+     * @ORM\JoinColumn(name="adventure_id", nullable=false)
      */
     private $adventure;
 

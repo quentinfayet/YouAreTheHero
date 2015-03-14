@@ -54,9 +54,16 @@ class Adventure
     /**
      * @var User
      * @ORM\ManyToOne(targetEntity="Gwyath\Bundle\UserBundle\Entity\User")
-     * @ORM\JoinColumn(name="author", nullable=false)
+     * @ORM\JoinColumn(name="author_id", nullable=false)
      */
     private $author;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="page_number", type="integer")
+     */
+    private $pageNumber;
 
 
     /**
@@ -199,5 +206,28 @@ class Adventure
     public function preUpdate()
     {
         $this->modified = new \DateTime();
+    }
+
+    /**
+     * Set pageNumber
+     *
+     * @param integer $pageNumber
+     * @return Adventure
+     */
+    public function setPageNumber($pageNumber)
+    {
+        $this->pageNumber = $pageNumber;
+
+        return $this;
+    }
+
+    /**
+     * Get pageNumber
+     *
+     * @return integer 
+     */
+    public function getPageNumber()
+    {
+        return $this->pageNumber;
     }
 }
