@@ -1,4 +1,9 @@
-gwyath_library:
+bestiary:
+    resource: "@GwyathBestiaryBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+library:
     resource: "@GwyathLibraryBundle/Controller/"
     type:     annotation
     prefix:   /

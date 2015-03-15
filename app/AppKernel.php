@@ -23,6 +23,7 @@ class AppKernel extends Kernel
             new Gwyath\Bundle\GameBundle\GwyathGameBundle(),
             new Gwyath\Bundle\AdventureBundle\GwyathAdventureBundle(),
             new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
+            new Gwyath\Bundle\BestiaryBundle\GwyathBestiaryBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
